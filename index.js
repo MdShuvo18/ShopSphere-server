@@ -28,11 +28,11 @@ async function run() {
     // await client.connect();
     // Send a ping to confirm a successful connection
     // await client.db("admin").command({ ping: 1 });
-    const allProductsCollection=client.db('ShopSphereCollection').collection('productCollection')
+    const allProductsCollection = client.db('ShopSphereCollection').collection('productCollection')
 
-  
 
-    app.get('/products', async(req,res)=>{
+    // all products get api
+    app.get('/products', async (req, res) => {
       const result = await allProductsCollection.find().toArray();
       // console.log(result)
       res.send(result);
