@@ -36,7 +36,7 @@ async function run() {
       // console.log(req.query)
       // for searcing
 
-      console.log(query)
+      // console.log(query)
       // for pagination
       const page = parseInt(req.query.page)
       const size = parseInt(req.query.size)
@@ -58,7 +58,7 @@ async function run() {
     })
 
     app.get('/search', async (req, res) => {
-      // console.log(req.query)
+      console.log(req.query)
       const filter = req.query
       console.log(filter)
       const query = {
