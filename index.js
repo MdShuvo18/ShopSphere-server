@@ -36,7 +36,7 @@ async function run() {
       // console.log(req.query)
       // for searcing
 
-      // console.log(query)
+      console.log(query)
       // for pagination
       const page = parseInt(req.query.page)
       const size = parseInt(req.query.size)
