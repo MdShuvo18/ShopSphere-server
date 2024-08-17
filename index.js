@@ -34,14 +34,44 @@ async function run() {
     // all products get api
     app.get('/products', async (req, res) => {
       // console.log(req.query)
+      // for searcing
+
+      // console.log(query)
+      // for pagination
       const page = parseInt(req.query.page)
       const size = parseInt(req.query.size)
+      // const filter = req.query
+      // console.log(filter)
+      // const query = {
+      //   productName: {
+      //     $regex: filter.search, $options: 'i'
+
+      //   }
+      // }
+
       const result = await allProductsCollection.find()
         .skip(page * size)
         .limit(size)
         .toArray();
-      // console.log(result)
+      console.log(result)
       res.send(result);
+    })
+
+    app.get('/search', async (req, res) => {
+      // console.log(req.query)
+      const filter = req.query
+      console.log(filter)
+      const query = {
+        productName: {
+          $regex: filter.search,
+          $options: 'i'
+
+        }
+      }
+      const cursor = allProductsCollection.find(query)
+      const result = await cursor.toArray()
+      console.log(result)
+      res.send(result)
     })
     // products count api
     app.get('/productsCount', async (req, res) => {
