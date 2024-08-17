@@ -40,14 +40,14 @@ async function run() {
       // for pagination
       const page = parseInt(req.query.page)
       const size = parseInt(req.query.size)
-      // const filter = req.query
-      // console.log(filter)
-      // const query = {
-      //   productName: {
-      //     $regex: filter.search, $options: 'i'
+      const filter = req.query
+      console.log(filter)
+      const query = {
+        productName: {
+          $regex: filter.search, $options: 'i'
 
-      //   }
-      // }
+        }
+      }
 
       const result = await allProductsCollection.find()
         .skip(page * size)
